@@ -40,6 +40,7 @@ admin.initializeApp({
 });
 const db = admin.firestore();
 const itemcollection = db.collection('items');
+var candidvotes = db.collection('tally');
 
 const candi = []
 for (let i = 0; i < 10; i++ ) {
@@ -63,25 +64,37 @@ app.get('/', function (req, res) {
         url: req.url
     }
     res.render('pages/index', data);
-    console.log(tally)
 })
 
 app.get('/results', async function (req, res) {
     const items = await itemcollection.get();
+    var votes = await candidvotes.get();
     let data = {
         url: req.url,
         tally: tally,
         itemdata: items.docs,
+        votesdata: votes.docs
     }
     res.render('pages/results', data);
 })
 app.post('/results', jsonParser, async function (req, res) {
     const received = req.body;
     const items = await itemcollection.get();
+    var votes = await candidvotes.get();
+    let votesdata = votes.docs;
+    let itemsdata = items.docs;
+    let x;
     for (let i = 0; i < 10; i++ ) {
-        if (tally[i][0] == received.passid) {
-            tally[i][1] = tally[i][1] + 1
+        let receiveddata = received.passid;
+        if (votesdata[i].data()['id'] == receiveddata) {
+            x = votesdata[i].data()['votes']  + 1
+            j = JSON.stringify(i)
+            candidvotes.doc(j).update({
+                "votes": x
+            })
         }
+        console.log(itemsdata[i].data()['name'])
+        console.log(votesdata[i].data()['votes'])
     }
     let data = {
         url: req.url,
@@ -96,7 +109,6 @@ app.get('/lists', async function (req, res) {
     //     console.log(doc.id, '=>', doc.data());
     // }
     //     )
-    console.log(items.docs.length);
     let data = {
         url: req.url,
         itemdata: items.docs,

@@ -26,7 +26,7 @@
           <% for(var i = 0; i < 10; i++) { %>
           <tr>
             <td><%= itemdata[i].data()['name'] %></td>
-            <td><%= tally[i][1] %></td>
+            <td><%= votesdata[i].data()['votes'] %></td>
           </tr>
           <% } %>
         </tbody>
