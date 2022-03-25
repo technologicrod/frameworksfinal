@@ -22,8 +22,13 @@ global.tally = [
     [9, 0],
 ]
 var admin = require("firebase-admin");
-
-var serviceAccount = require("./itelectiveframeworks.json");
+let serviceAccount
+if (process.env.GOOGLE_CREDENTIALS != null){
+    serviceAccount = JSON.parse(process.env.GOOGLE_CREDENTIALS)
+}
+else {
+    serviceAccount = require("./itelectiveframeworks.json");
+}
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -87,6 +92,7 @@ app.get('/lists', async function (req, res) {
     //     console.log(doc.id, '=>', doc.data());
     // }
     //     )
+    console.log(items.docs.length);
     let data = {
         url: req.url,
         itemdata: items.docs,
