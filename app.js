@@ -9,6 +9,11 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 const port = process.env.PORT || 8080;
 
+var http = require("http");
+setInterval(function() {
+    http.get("http://<your app name>.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
+
 global.tally = [
     [0, 0],
     [1, 0],
@@ -78,7 +83,6 @@ app.post('/results', jsonParser, async function (req, res) {
             tally[i][1] = tally[i][1] + 1
         }
     }
-    console.log(tally)
     let data = {
         url: req.url,
         tally: tally,
