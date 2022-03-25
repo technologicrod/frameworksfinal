@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+
+  <body>
+    <header>
+      <%- include('../partials/header'); %>
+      <style>
+        .latlong {
+          font-size: 20px;
+          color: black;
+        }
+        .flag {
+          margin-bottom: 10px;
+        }
+      </style>
+    </header>
+    <main class="container">
+      <center>
+        <div>
+          <img
+            class="flag"
+            src="https://cdn-icons-png.flaticon.com/512/197/197430.png"
+            width="50"
+            height="'50"
+          />
+          <h4><%= weathertoronto[0].location.name %></h4>
+          <p class="latlong">
+            <%= weathertoronto[0].location.lat %> lat, <%=
+            weathertoronto[0].location.long %> long
+          </p>
+        </div>
+      </center>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Date</th>
+            <th scope="col">Weather</th>
+            <th scope="col">Icon</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-active">
+            <th scope="row">Today</th>
+            <td><b><%= weathertoronto[1].current.date %></b></td>
+            <td><%= weathertoronto[1].current.skytext %></td>
+            <td>sun</td>
+          </tr>
+          <tr>
+            <th scope="row"><%= weathertoronto[1].forecast[0].day %></th>
+            <td><%= weathertoronto[1].forecast[0].date %></td>
+            <td><%= weathertoronto[1].forecast[0].skytextday %></td>
+            <td>rain</td>
+          </tr>
+          <tr class="table-active">
+            <th scope="row"><%= weathertoronto[1].forecast[1].day %></th>
+            <td><%= weathertoronto[1].forecast[1].date %></td>
+            <td><%= weathertoronto[1].forecast[1].skytextday %></td>
+            <td>rain</td>
+          </tr>
+          <tr">
+          <th scope="row"><%= weathertoronto[1].forecast[2].day %></th>
+          <td><%= weathertoronto[1].forecast[2].date %></td>
+          <td><%= weathertoronto[1].forecast[2].skytextday %></td>
+          <td>rain</td>
+          </tr>
+          <tr class="table-active">
+            <th scope="row"><%= weathertoronto[1].forecast[3].day %></th>
+            <td><%= weathertoronto[1].forecast[3].date %></td>
+            <td><%= weathertoronto[1].forecast[3].skytextday %></td>
+            <td>rain</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+    <footer><%- include('../partials/footer'); %></footer>
+
+    <%- include('../partials/script'); %>
+  </body>
+</html>

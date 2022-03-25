@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+    <style>
+      th {
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header><%- include('../partials/header'); %></header>
+    <main class="container">
+      <center>
+        <h1>Mock Election Count</h1>
+      </center>
+      <table class="table table-bordered">
+        <thead class="thead" style="background-color: grey">
+          <tr>
+            <th class="th">Name</th>
+            <th>Mock Votes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i = 0; i < 10; i++) { %>
+          <tr>
+            <td><%= itemdata[i].data()['name'] %></td>
+            <td><%= tally[i][1] %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </main>
+    <!--<footer><%- include('../partials/footer'); %></footer> -->
+
+    <%- include('../partials/script'); %>
+  </body>
+</html>

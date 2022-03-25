@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %> <% var thename; %> <% var thepic; %> <%
+    var theparty; %> <% var thepos; %> <% var thecolor; %> <% url =
+    url.slice(-1); %> <% for(var index=0; index < itemdata.length; index++) { %>
+    <% if (index == url) {%> <% thename = itemdata[index].data()['name'] %> <%
+    thepic = itemdata[index].data()['img_url'] %> <% theparty =
+    itemdata[index].data()['party'] %> <% thepos =
+    itemdata[index].data()['current_pos'] %> <% } %> <% } %>
+    <style>
+      img,
+      .candimage {
+        height: 300px;
+        width: 300px;
+        border: solid 2px black;
+        border-radius: 100px;
+      }
+      h1 {
+        font-weight: bold;
+      }
+      h2::first-letter {
+        text-transform: uppercase;
+      }
+      h3 {
+        font-style: italic;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header><%- include('../partials/header'); %></header>
+    <main class="container">
+      <center>
+        <br />
+        <img class="candimage" src="<%= thepic %>" />
+        <h1><%= thename %></h1>
+        <h3><%= theparty %></h3>
+        <br />
+        <h2><%= thepos %></h2>
+        <br />
+        <form action="/results" method="POST">
+          <button
+            type="number"
+            class="btn btn-secondary"
+            name="passid"
+            value="<%= url %>"
+          >
+            Vote for President
+          </button>
+        </form>
+      </center>
+    </main>
+
+    <%- include('../partials/script'); %>
+  </body>
+</html>

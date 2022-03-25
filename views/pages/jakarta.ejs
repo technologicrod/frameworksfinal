@@ -1,0 +1,14 @@
+<%- include('../partials/head'); %> <% var thename; %> <% var thepic; %> <% var
+theparty; %> <% var thepos; %> <% var thecolor; %> <% url = url.slice(-1); %> <%
+for(var index=0; index < itemdata.length; index++) { %> <% if (index == url) {%>
+<% thename = itemdata[index].data()['name'] %> <% thepic =
+itemdata[index].data()['img_url'] %> <% theparty =
+itemdata[index].data()['party'] %> <% thepos =
+itemdata[index].data()['current_pos'] %> <% } %> <% if (url == 0) { %> <%
+thecolor == pink %> <% } else if (url == 1) { %> <% thecolor == #1290a3 %> <% }
+else if (url == 2) { %> <% thecolor == violet %> <% } else if (url == 3) { %> <%
+thecolor == #380202 %> <% } else if (url == 4) { %> <% thecolor == red %> <% }
+else if (url == 5) { %> <% thecolor == green %> <% } else if (url == 6) { %> <%
+thecolor == blue %> <% } else if (url == 7) { %> <% thecolor == orange %> <% }
+else if (url == 8) { %> <% thecolor == brown %> <% } else if (url == 9) { %> <%
+thecolor == yellow %> <% } %> <% } %>
