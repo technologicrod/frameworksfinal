@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <%- include('../partials/head'); %> <% var thename; %> <% var thepic; %> <%
-    var theparty; %> <% var thepos; %> <% var thecolor; %> <% url =
+    var theparty; %> <% var thepos; %> <% var thecolor; %> <% url2 =
     url.slice(-1); %> <% for(var index=0; index < itemdata.length; index++) { %>
-    <% if (index == url) {%> <% thename = itemdata[index].data()['name'] %> <%
+    <% if (index == url2) {%> <% thename = itemdata[index].data()['name'] %> <%
     thepic = itemdata[index].data()['img_url'] %> <% theparty =
     itemdata[index].data()['party'] %> <% thepos =
     itemdata[index].data()['current_pos'] %> <% } %> <% } %>
